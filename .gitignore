@@ -1,0 +1,37 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment folders
+.venv/
+env/
+venv/
+ENV/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+*.tar.gz
+
+# Python wheels
+*.egg-info/
+*.dist-info/
+*.pyc
+
+# Testing
+*.log
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
