@@ -1,26 +1,37 @@
 [
     {
-        "id": "573c63e4-9e86-4742-9185-5405c182c830",
+        "id": "98bbbd16-1dba-47fc-87aa-5dac48c3d3a1",
         "name": "nikita",
-        "address": "dsada",
-        "phone": "4164546532",
+        "phones": [],
+        "birthday": null,
         "email": "zel@gmail.com",
-        "birthday": "2002-12-12"
+        "address": "dsada"
     },
     {
-        "id": "965a217c-7ba9-4b58-9330-ec255d039e3c",
+        "id": "359db983-7c74-4a24-8a9b-75631a1c3fa3",
         "name": "nik",
-        "address": "dsada",
-        "phone": "1234567890",
+        "phones": [],
+        "birthday": null,
         "email": "test@gmail.com",
-        "birthday": "2002-12-12"
+        "address": "dsada"
     },
     {
-        "id": "abad802e-b9d3-4a7a-81cc-2356f3e4039b",
+        "id": "7a5c83fc-8865-42ad-9e0f-a95f46984ce8",
         "name": "test 2",
-        "address": "dsadas",
-        "phone": "1234567890",
+        "phones": [],
+        "birthday": null,
         "email": "test@gmail.com",
-        "birthday": "2000-12-12"
+        "address": "dsadas"
+    },
+    {
+        "id": "a2cec87f-71a0-4126-aae2-d4cfd857e947",
+        "name": "Mykhailo",
+        "phones": [
+            "0631111111",
+            "0631111112"
+        ],
+        "birthday": "2000-01-01",
+        "email": "gogi@my.com",
+        "address": "qwerty 4/3"
     }
 ]
