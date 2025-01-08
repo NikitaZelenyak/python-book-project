@@ -40,8 +40,14 @@ class ContactManager:
         """
         Saves contacts to file / Зберігає контакти у файл
         """
-        data = [contact.to_dict() for contact in self.contacts]
+        print("\nSaving contacts to file:")
+        data = []
+        for contact in self.contacts:
+            contact_dict = contact.to_dict()
+            print(f"Saving contact: {contact_dict}")
+            data.append(contact_dict)
         save_to_file(CONTACTS_FILE, data)
+        print(f"Saved {len(data)} contacts")
 
     def add_contact(self, name, address=None, phone=None, email=None, birthday=None):
         """
@@ -73,6 +79,15 @@ class ContactManager:
         self.contacts.append(contact)
         self.save_contacts()
         return True
+
+    def get_all_contacts(self):
+        """
+        Returns all contacts sorted by name
+        Повертає всі контакти, відсортовані за ім'ям
+        Returns:
+            list: List of contacts / Список контактів
+        """
+        return sorted(self.contacts, key=lambda x: str(x.name).lower())
 
     def find_contact(self, name):
         """
@@ -130,10 +145,52 @@ class ContactManager:
         self.save_contacts()
         return True
 
-    def get_all_contacts(self):
+    def find_by_phone(self, phone):
         """
-        Returns all contacts / Повертає всі контакти
+        Finds contacts by partial phone number match
+        Пошук контактів за частковим збігом номера телефону
+        Args:
+            phone (str): Phone number to find / Номер телефону для пошуку
         Returns:
-            list: List of contacts / Список контактів
+            list: List of found contacts / Список знайдених контактів
         """
-        return self.contacts
+        matches = []
+        search_phone = phone.lower()
+        for contact in self.contacts:
+            for p in contact.phones:
+                if search_phone in str(p.value).lower():
+                    matches.append(contact)
+                    break  # Avoid duplicates if contact has multiple matching phones
+        return sorted(matches, key=lambda x: str(x.name.value).lower())
+
+    def find_by_email(self, email):
+        """
+        Finds contacts by partial email match
+        Пошук контактів за частковим збігом email
+        Args:
+            email (str): Email to find / Email для пошуку
+        Returns:
+            list: List of found contacts / Список знайдених контактів
+        """
+        matches = []
+        search_email = email.lower()
+        for contact in self.contacts:
+            if contact.email and search_email in contact.email.value.lower():
+                matches.append(contact)
+        return sorted(matches, key=lambda x: str(x.name.value).lower())
+
+    def find_contacts(self, name):
+        """
+        Finds contacts by partial name match
+        Пошук контактів за частковим збігом імені
+        Args:
+            name (str): Name to find / Ім'я для пошуку
+        Returns:
+            list: List of found contacts / Список знайдених контактів
+        """
+        matches = []
+        search_name = name.lower()
+        for contact in self.contacts:
+            if search_name in contact.name.value.lower():
+                matches.append(contact)
+        return sorted(matches, key=lambda x: str(x.name.value).lower())

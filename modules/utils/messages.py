@@ -15,7 +15,7 @@ CONTACT_EXISTS = "Contact with this name already exists"
 NO_CONTACTS = "No contacts found"
 
 # Input messages / Повідомлення при введенні даних
-ENTER_MODE = "Enter mode (contacts/notes/exit): "
+ENTER_MODE = "Enter mode (contacts/notes or exit): "
 ENTER_COMMAND = "Enter command: "
 ENTER_NAME = "Enter name: "
 ENTER_PHONE = "Enter phone (10 digits) or press Enter to skip: "
@@ -44,8 +44,8 @@ help      - show this help message
 back      - return to main menu"""
 
 # Operation messages / Повідомлення операцій
-ADDING_CONTACT = "Adding new contact (press Ctrl+C to cancel)"
-EDITING_CONTACT = "Editing contact (press Ctrl+C to cancel)"
-DELETING_CONTACT = "Deleting contact (press Ctrl+C to cancel)"
-SEARCHING_CONTACTS = "Search contacts (press Ctrl+C to cancel)"
+ADDING_CONTACT = "Adding new contact (or press Enter to cancel)"
+EDITING_CONTACT = "Editing contact (or press Enter to cancel)"
+DELETING_CONTACT = "Deleting contact (or press Enter to cancel)"
+SEARCHING_CONTACTS = "Search contacts (or press Enter to cancel)"
 CONFIRM_DELETE = "Are you sure you want to delete this contact? (y/n): "

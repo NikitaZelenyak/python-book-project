@@ -51,7 +51,7 @@ def add_contact_interactive(assistant):
         if not name:
             print(CANCELED_MESSAGE)
             return
-        if assistant.contacts.find_contact(name):
+        if assistant.contacts.find_contact_by_name(name):
             print(CONTACT_EXISTS)
             continue
         break
@@ -151,6 +151,21 @@ def delete_contact_interactive(assistant):
         print(CANCELED_MESSAGE)
 
 
+def show_search_results(matches):
+    """
+    Shows search results in a formatted way
+    Показує результати пошуку у форматованому вигляді
+    Args:
+        matches (list): List of found contacts / Список знайдених контактів
+    """
+    if matches:
+        print(f"\nFound {len(matches)} contact(s):")
+        for i, contact in enumerate(matches, 1):
+            print(f"{i}. {contact}")
+    else:
+        print(CONTACT_NOT_FOUND)
+
+
 def search_contacts_interactive(assistant):
     """
     Interactive contact search
@@ -168,30 +183,31 @@ def search_contacts_interactive(assistant):
         return
 
     if choice == "1":
-        name = input(ENTER_NAME).strip()
+        name = input("Enter full or partial name: ").strip()
         if not name:
             print(CANCELED_MESSAGE)
             return
-        contact = assistant.contacts.find_contact(name)
-        if contact:
-            print(f"\nFound contact:\n{contact}")
-        else:
-            print(CONTACT_NOT_FOUND)
+        matches = assistant.contacts.find_contacts(name)
 
     elif choice == "2":
-        phone = input_with_validation(ENTER_PHONE, Phone.validate, INVALID_PHONE)
-        if phone is False:
+        phone = input("Enter full or partial phone number: ").strip()
+        if not phone:
+            print(CANCELED_MESSAGE)
             return
-        print(NOT_IMPLEMENTED_MESSAGE.format("Phone search"))
+        matches = assistant.contacts.find_by_phone(phone)
 
     elif choice == "3":
-        email = input_with_validation(ENTER_EMAIL, Email.validate, INVALID_EMAIL)
-        if email is False:
+        email = input("Enter full or partial email: ").strip()
+        if not email:
+            print(CANCELED_MESSAGE)
             return
-        print(NOT_IMPLEMENTED_MESSAGE.format("Email search"))
+        matches = assistant.contacts.find_by_email(email)
 
     else:
         print(INVALID_CHOICE)
+        return
+
+    show_search_results(matches)
 
 
 def show_birthdays_interactive(assistant):
