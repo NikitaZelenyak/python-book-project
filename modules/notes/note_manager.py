@@ -23,9 +23,6 @@ class NoteManager:
             self._save_notes()
             break
 
-   def delete_note(self, note_id):
+   def delete_note(self, note_id : str):
       self.notes = [note for note in self.notes if note.id != note_id]
-      print(
-         f"Notes : {self.notes}"
-      )
       self._save_notes()
