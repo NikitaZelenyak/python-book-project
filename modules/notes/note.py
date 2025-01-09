@@ -1,4 +1,4 @@
-from modules.utils.field import Field
+from modules.core.fields.fields import Field
 import uuid
 
 class Note:

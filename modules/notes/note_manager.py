@@ -1,5 +1,4 @@
-from modules.utils.load_from_file import load_from_file
-from modules.utils.save_to_file import save_to_file
+from modules.core.utils.file_manager import load_from_file, save_to_file
 from modules.notes.note import Note
 
 NOTES_FILE = "data/notes.json"

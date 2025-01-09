@@ -16,7 +16,6 @@ def main():
     Main function of the assistant
     Головна функція асистента
     """
-    init(autoreset=True)  # Initialize colorama
     assistant = PersonalAssistant()
     print(f"{Fore.GREEN}{Style.BRIGHT}👋 {WELCOME_MESSAGE}")
 
@@ -51,7 +50,7 @@ def main():
                         if contacts:
                             print(f"\n{Fore.MAGENTA}📋 All contacts:")
                             for contact in contacts:
-                                print(f"{Fore.WHITE}{contact}")
+                                 print(f"{Fore.WHITE}{contact}")
                         else:
                             print(NO_CONTACTS)
                     elif command == BIRTHDAYS:
@@ -63,33 +62,7 @@ def main():
                     print(f"{Fore.RED}⚠️ An error occurred: {e}")
 
         elif mode == NOTES_MODE:
-            print(f"\n{Fore.YELLOW}📝 Entering notes mode (type 'help' for available commands)")
-            while True:
-                try:
-                    command = input(f"{Fore.CYAN}{ENTER_COMMAND}").lower().strip()
-
-                    if command == BACK:
-                        print(f"{Fore.YELLOW}🔙 Returning to main menu.")
-                        break
-                    elif command == HELP:
-                        print(f"{Fore.GREEN}ℹ️ Available commands: add, all, edit, delete, search, sort")
-                    elif command == "add":
-                        assistant.add_note()
-                    elif command == "all":
-                        assistant.all_notes()
-                    elif command == "edit":
-                        assistant.edit_note()
-                    elif command == "delete":
-                        assistant.delete_note()
-                    elif command == "search":
-                        print(f"{Fore.YELLOW}🔍 Search functionality is not yet implemented.")
-                    elif command == "sort":
-                        print(f"{Fore.YELLOW}📂 Sort functionality is not yet implemented.")
-                    else:
-                        print(f"{Fore.RED}⚠️ Invalid action. Please choose add, all, edit, delete, search, or sort.")
-
-                except Exception as e:
-                    print(f"{Fore.RED}⚠️ An error occurred: {e}")
+            print(f"{Fore.YELLOW}📝 {NOT_IMPLEMENTED_MESSAGE.format('Notes mode')}")
 
         else:
             print(f"{Fore.RED}⚠️ {INVALID_MODE_MESSAGE}")
