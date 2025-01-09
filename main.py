@@ -1,46 +1,98 @@
+from colorama import Fore, Style, init
 from modules.assistant.assistant import PersonalAssistant
+from modules.core.constants.messages import *
+from modules.core.constants.commands import *
+from modules.core.utils.interactive import (
+    add_contact_interactive,
+    edit_contact_interactive,
+    delete_contact_interactive,
+    search_contacts_interactive,
+    show_birthdays_interactive,
+)
+
 
 def main():
-    print("Welcome to your personal assistant!")
-
+    """
+    Main function of the assistant
+    Головна функція асистента
+    """
+    init(autoreset=True)  # Initialize colorama
     assistant = PersonalAssistant()
+    print(f"{Fore.GREEN}{Style.BRIGHT}👋 {WELCOME_MESSAGE}")
 
     while True:
-        mode = input("Select mode: ").lower().strip()
+        mode = input(f"{Fore.CYAN}{ENTER_MODE}").lower().strip()
 
-        if mode == "exit":
+        if mode == EXIT_COMMAND:
+            print(f"{Fore.RED}👋 {GOODBYE_MESSAGE}")
             break
-        elif mode == "contacts":
-            break
-        elif mode == "notes":
+
+        elif mode == CONTACTS_MODE:
+            print(f"\n{Fore.YELLOW}📇 Entering contacts mode (type 'help' for available commands)")
             while True:
-                command = input("Input your command: ").lower().strip()
+                try:
+                    command = input(f"{Fore.CYAN}{ENTER_COMMAND}").lower().strip()
 
-                if command == "back":
-                    break
+                    if command == BACK:
+                        print(f"{Fore.YELLOW}🔙 Returning to main menu.")
+                        break
+                    elif command == HELP:
+                        print(f"{Fore.GREEN}ℹ️ {HELP_MESSAGE}")
+                    elif command == ADD_CONTACT:
+                        add_contact_interactive(assistant)
+                    elif command == EDIT_CONTACT:
+                        edit_contact_interactive(assistant)
+                    elif command == DELETE_CONTACT:
+                        delete_contact_interactive(assistant)
+                    elif command == SEARCH_CONTACT:
+                        search_contacts_interactive(assistant)
+                    elif command == ALL_CONTACTS:
+                        contacts = assistant.contacts.get_all_contacts()
+                        if contacts:
+                            print(f"\n{Fore.MAGENTA}📋 All contacts:")
+                            for contact in contacts:
+                                print(f"{Fore.WHITE}{contact}")
+                        else:
+                            print(NO_CONTACTS)
+                    elif command == BIRTHDAYS:
+                        show_birthdays_interactive(assistant)
+                    else:
+                        print(f"{Fore.RED}⚠️ {INVALID_COMMAND_MESSAGE}")
 
-                elif command == "all":
-                    assistant.all_notes()
+                except Exception as e:
+                    print(f"{Fore.RED}⚠️ An error occurred: {e}")
 
-                elif command == "add":
-                    assistant.add_note()
+        elif mode == NOTES_MODE:
+            print(f"\n{Fore.YELLOW}📝 Entering notes mode (type 'help' for available commands)")
+            while True:
+                try:
+                    command = input(f"{Fore.CYAN}{ENTER_COMMAND}").lower().strip()
 
-                elif command == "search":
-                    break
+                    if command == BACK:
+                        print(f"{Fore.YELLOW}🔙 Returning to main menu.")
+                        break
+                    elif command == HELP:
+                        print(f"{Fore.GREEN}ℹ️ Available commands: add, all, edit, delete, search, sort")
+                    elif command == "add":
+                        assistant.add_note()
+                    elif command == "all":
+                        assistant.all_notes()
+                    elif command == "edit":
+                        assistant.edit_note()
+                    elif command == "delete":
+                        assistant.delete_note()
+                    elif command == "search":
+                        print(f"{Fore.YELLOW}🔍 Search functionality is not yet implemented.")
+                    elif command == "sort":
+                        print(f"{Fore.YELLOW}📂 Sort functionality is not yet implemented.")
+                    else:
+                        print(f"{Fore.RED}⚠️ Invalid action. Please choose add, all, edit, delete, search, or sort.")
 
-                elif command == "sort":
-                    break
+                except Exception as e:
+                    print(f"{Fore.RED}⚠️ An error occurred: {e}")
 
-                elif command == "edit":
-                    assistant.edit_note()
-
-                elif command == "delete":
-                    assistant.delete_note()
-
-                else:
-                    print("Invalid action. Please choose add, search, sort, edit, or delete.")
         else:
-            print("Invalid mode. Please choose contacts or notes.")
+            print(f"{Fore.RED}⚠️ {INVALID_MODE_MESSAGE}")
 
 
 if __name__ == "__main__":
