@@ -1,41 +1,6 @@
-from modules.utils.fields import Phone, Email, Address, Birthday
-from modules.utils.messages import *
-
-
-def input_with_validation(
-    prompt, validator, error_message, allow_empty=True, cancel_on_empty=False
-):
-    """
-    Helper function for input with validation
-    Допоміжна функція для введення з валідацією
-
-    Args:
-        prompt (str): Input prompt / Запрошення до введення
-        validator (callable): Validation function / Функція валідації
-        error_message (str): Error message / Повідомлення про помилку
-        allow_empty (bool): Allow empty input / Дозволити пусте введення
-        cancel_on_empty (bool): Cancel operation on empty input / Скасувати операцію при пустому введенні
-
-    Returns:
-        str or None: Validated input or None / Перевірене введення або None
-        False: If operation was cancelled / Якщо операція була скасована
-    """
-    while True:
-        value = input(prompt).strip()
-
-        # Handle empty input
-        if not value:
-            if cancel_on_empty:
-                return False  # Cancel operation
-            if allow_empty:
-                return None  # Skip field
-            print(INVALID_NAME)
-            continue
-
-        # Validate non-empty input
-        if validator(value):
-            return value
-        print(error_message)
+from modules.core.fields import Phone, Email, Address, Birthday
+from modules.core.constants.messages import *
+from modules.core.utils.input_manager import input_with_validation
 
 
 def add_contact_interactive(assistant):
@@ -51,7 +16,7 @@ def add_contact_interactive(assistant):
         if not name:
             print(CANCELED_MESSAGE)
             return
-        if assistant.contacts.find_contact_by_name(name):
+        if assistant.contacts.find_contact(name):
             print(CONTACT_EXISTS)
             continue
         break
@@ -62,9 +27,8 @@ def add_contact_interactive(assistant):
     address = input_with_validation(ENTER_ADDRESS, Address.validate, INVALID_ADDRESS)
     birthday = input_with_validation(ENTER_BIRTHDAY, Birthday.validate, INVALID_DATE)
 
-    # Add contact
     result = assistant.add_contact(name, address, phone, email, birthday)
-    if result or isinstance(result, bool):  # Added successfully or skipped some fields
+    if result or isinstance(result, bool):
         print(CONTACT_ADDED)
 
 
@@ -87,34 +51,13 @@ def edit_contact_interactive(assistant):
         return
 
     print(f"\nCurrent contact info:\n{contact}")
-    print(
-        "\nEnter new values (press Enter to keep current value, press Enter twice to cancel)"
-    )
+    print("\nEnter new values (press Enter to keep current value)")
 
     # Edit fields / Редагування полів
-    phone = input_with_validation(
-        ENTER_PHONE, Phone.validate, INVALID_PHONE, cancel_on_empty=True
-    )
-    if phone is False:
-        return
-
-    email = input_with_validation(
-        ENTER_EMAIL, Email.validate, INVALID_EMAIL, cancel_on_empty=True
-    )
-    if email is False:
-        return
-
-    address = input_with_validation(
-        ENTER_ADDRESS, Address.validate, INVALID_ADDRESS, cancel_on_empty=True
-    )
-    if address is False:
-        return
-
-    birthday = input_with_validation(
-        ENTER_BIRTHDAY, Birthday.validate, INVALID_DATE, cancel_on_empty=True
-    )
-    if birthday is False:
-        return
+    phone = input_with_validation(ENTER_PHONE, Phone.validate, INVALID_PHONE)
+    email = input_with_validation(ENTER_EMAIL, Email.validate, INVALID_EMAIL)
+    address = input_with_validation(ENTER_ADDRESS, Address.validate, INVALID_ADDRESS)
+    birthday = input_with_validation(ENTER_BIRTHDAY, Birthday.validate, INVALID_DATE)
 
     if assistant.contacts.update_contact(name, address, phone, email, birthday):
         print(CONTACT_UPDATED)

@@ -1,6 +1,7 @@
 from modules.assistant.assistant import PersonalAssistant
-from modules.utils.messages import *
-from modules.utils.interactive import (
+from modules.core.constants.messages import *
+from modules.core.constants.commands import *
+from modules.core.utils.interactive import (
     add_contact_interactive,
     edit_contact_interactive,
     delete_contact_interactive,
@@ -20,29 +21,29 @@ def main():
     while True:
         mode = input(ENTER_MODE).lower().strip()
 
-        if mode == "exit":
+        if mode == EXIT_COMMAND:
             print(GOODBYE_MESSAGE)
             break
 
-        elif mode == "contacts":
+        elif mode == CONTACTS_MODE:
             print("\nEntering contacts mode (type 'help' for available commands)")
             while True:
                 try:
                     command = input(ENTER_COMMAND).lower().strip()
 
-                    if command == "back":
+                    if command == BACK:
                         break
-                    elif command == "help":
+                    elif command == HELP:
                         print(HELP_MESSAGE)
-                    elif command == "add":
+                    elif command == ADD_CONTACT:
                         add_contact_interactive(assistant)
-                    elif command == "edit":
+                    elif command == EDIT_CONTACT:
                         edit_contact_interactive(assistant)
-                    elif command == "delete":
+                    elif command == DELETE_CONTACT:
                         delete_contact_interactive(assistant)
-                    elif command == "search":
+                    elif command == SEARCH_CONTACT:
                         search_contacts_interactive(assistant)
-                    elif command == "all":
+                    elif command == ALL_CONTACTS:
                         contacts = assistant.contacts.get_all_contacts()
                         if contacts:
                             print("\nAll contacts:")
@@ -50,7 +51,7 @@ def main():
                                 print(f"\n{contact}")
                         else:
                             print(NO_CONTACTS)
-                    elif command == "birthdays":
+                    elif command == BIRTHDAYS:
                         show_birthdays_interactive(assistant)
                     else:
                         print(INVALID_COMMAND_MESSAGE)
@@ -58,7 +59,7 @@ def main():
                 except Exception as e:
                     print(f"An error occurred: {e}")
 
-        elif mode == "notes":
+        elif mode == NOTES_MODE:
             print(NOT_IMPLEMENTED_MESSAGE.format("Notes mode"))
 
         else:

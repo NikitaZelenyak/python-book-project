@@ -32,6 +32,13 @@ INVALID_ADDRESS = "Address is too short"
 INVALID_DATE = "Invalid date format. Use DD.MM.YYYY"
 INVALID_CHOICE = "Invalid choice"
 
+# Operation messages / Повідомлення операцій
+ADDING_CONTACT = "Adding new contact (or press Enter to cancel)"
+EDITING_CONTACT = "Editing contact (or press Enter to cancel)"
+DELETING_CONTACT = "Deleting contact (or press Enter to cancel)"
+SEARCHING_CONTACTS = "Search contacts (or press Enter to cancel)"
+CONFIRM_DELETE = "Are you sure you want to delete this contact? (y/n): "
+
 # Help messages / Повідомлення довідки
 HELP_MESSAGE = """Available commands:
 add       - add new contact
@@ -42,10 +49,3 @@ all       - show all contacts
 birthdays - show upcoming birthdays
 help      - show this help message
 back      - return to main menu"""
-
-# Operation messages / Повідомлення операцій
-ADDING_CONTACT = "Adding new contact (or press Enter to cancel)"
-EDITING_CONTACT = "Editing contact (or press Enter to cancel)"
-DELETING_CONTACT = "Deleting contact (or press Enter to cancel)"
-SEARCHING_CONTACTS = "Search contacts (or press Enter to cancel)"
-CONFIRM_DELETE = "Are you sure you want to delete this contact? (y/n): "

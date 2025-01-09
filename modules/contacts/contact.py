@@ -1,5 +1,6 @@
 import uuid
-from modules.utils.fields import Name, Phone, Birthday, Email, Address
+from modules.core.fields import Name, Phone, Birthday, Email, Address
+from modules.core.constants.commands import DATE_FORMAT
 
 
 class Contact:
@@ -157,7 +158,7 @@ class Contact:
             components.append(f"phones: {phones}")
 
         if self.birthday:
-            date_str = self.birthday.value.strftime("%d.%m.%Y")
+            date_str = self.birthday.value.strftime(DATE_FORMAT)
             components.append(f"birthday: {date_str}")
 
         if self.email:

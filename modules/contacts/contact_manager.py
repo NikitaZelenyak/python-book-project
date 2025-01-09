@@ -1,5 +1,5 @@
-from modules.utils.load_from_file import load_from_file
-from modules.utils.save_to_file import save_to_file
+from modules.core.utils.file_manager import load_from_file, save_to_file
+from modules.core.constants.commands import CONTACTS_FILE
 from modules.contacts.contact import Contact
 
 CONTACTS_FILE = "data/contacts.json"

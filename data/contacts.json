@@ -1,6 +1,6 @@
 [
     {
-        "id": "98bbbd16-1dba-47fc-87aa-5dac48c3d3a1",
+        "id": "44b5132a-3719-446b-b075-c6f12f8ed35b",
         "name": "nikita",
         "phones": [],
         "birthday": null,
@@ -8,7 +8,7 @@
         "address": "dsada"
     },
     {
-        "id": "359db983-7c74-4a24-8a9b-75631a1c3fa3",
+        "id": "17c2d412-2ed5-4177-a996-a627c87fae71",
         "name": "nik",
         "phones": [],
         "birthday": null,
@@ -16,7 +16,7 @@
         "address": "dsada"
     },
     {
-        "id": "7a5c83fc-8865-42ad-9e0f-a95f46984ce8",
+        "id": "bea25ed3-6cb2-4a5d-bbbf-5e3e9c57041d",
         "name": "test 2",
         "phones": [],
         "birthday": null,
@@ -24,14 +24,24 @@
         "address": "dsadas"
     },
     {
-        "id": "a2cec87f-71a0-4126-aae2-d4cfd857e947",
+        "id": "9cb20085-ec29-482d-bef9-1a5c7e8608bb",
         "name": "Mykhailo",
         "phones": [
             "0631111111",
             "0631111112"
         ],
-        "birthday": "2000-01-01",
+        "birthday": null,
         "email": "gogi@my.com",
         "address": "qwerty 4/3"
+    },
+    {
+        "id": "e652c7af-e1ca-4e90-830a-258098110d60",
+        "name": "Gogi",
+        "phones": [
+            "1234567890"
+        ],
+        "birthday": "2000-12-12",
+        "email": "qweqwr@qweq.qw",
+        "address": "asda 12/12"
     }
 ]
