@@ -1,1 +1,40 @@
-[]
+[
+    {
+        "id": "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
+        "text": "Buy groceries",
+        "tags": [
+            "shopping",
+            "errands"
+        ]
+    },
+    {
+        "id": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
+        "text": "Finish reading book",
+        "tags": [
+            "reading",
+            "leisure"
+        ]
+    },
+    {
+        "id": "3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r",
+        "text": "Prepare presentation for Monday",
+        "tags": [
+            "work",
+            "urgent"
+        ]
+    },
+    {
+        "id": "1fe93760-f20d-433e-a09e-34c662eed3b7",
+        "text": "Vlad hello",
+        "tags": [
+            ""
+        ]
+    },
+    {
+        "id": "6c56578c-fe81-49e7-9cec-383e5a84659e",
+        "text": "Vlad qweqweqweqwe",
+        "tags": [
+            ""
+        ]
+    }
+]

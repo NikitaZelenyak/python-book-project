@@ -1,29 +1,47 @@
 from modules.assistant.assistant import PersonalAssistant
 
 def main():
+    print("Welcome to your personal assistant!")
+
     assistant = PersonalAssistant()
 
     while True:
-        print("\nPersonal Assistant")
-        print("1. Add Contact")
-        print("2. Exit")
-        
-        choice = input("Choose an option: ")
-        
-        if choice == "1":
-            name = input("Enter name: ")
-            address = input("Enter address: ")
-            phone = input("Enter phone: ")
-            email = input("Enter email: ")
-            birthday = input("Enter birthday (YYYY-MM-DD): ")
-            assistant.add_contact(name, address, phone, email, birthday)
-        
-        elif choice == "2":
-            print("Goodbye!")
+        mode = input("Select mode ").lower().strip()
+
+        if mode == "exit":
             break
-        
+        elif mode == "contacts":
+            break
+        elif mode == "notes":
+            while True:
+                command = input("Input your command").lower().strip()
+
+                if command == "back":
+                    break
+
+                elif command == "all":
+                    assistant.all_notes()
+
+                elif command == "add":
+                    assistant.add_note()
+
+                elif command == "search":
+                    break
+
+                elif command == "sort":
+                    break
+
+                elif command == "edit":
+                    assistant.edit_note()
+
+                elif command == "delete":
+                    assistant.delete_note()
+
+                else:
+                    print("Invalid action. Please choose add, search, sort, edit, or delete.")
         else:
-            print("Invalid choice. Please try again.")
+            print("Invalid mode. Please choose contacts or notes.")
+
 
 if __name__ == "__main__":
     main()
