@@ -63,6 +63,7 @@ class Contact:
         """
         if self.birthday is None:
             birthday_field = Birthday(birthday)
+            print(birthday_field)
             if birthday_field.value is not None:
                 self.birthday = birthday_field
                 return True

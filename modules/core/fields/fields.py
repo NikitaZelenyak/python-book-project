@@ -99,12 +99,13 @@ class Birthday(Field):
             try:
                 # Convert string to date
                 date = datetime.strptime(value, DATE_FORMAT).date()
+                print("date =", date)
 
                 # Validate date
                 if not self.validate_date(date):
                     raise ValueError("Invalid date")
 
-                self._value = date
+                self._value = date.strftime(DATE_FORMAT)
             except ValueError:
                 raise ValueError("Invalid date format")
         else:
