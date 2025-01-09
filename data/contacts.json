@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "id": "e6cdfa03-645a-40df-89c0-63191e8fbe06",
+        "name": "n",
+        "phones": [],
+        "birthday": "12.08.2000",
+        "email": null,
+        "address": null
+    }
+]
