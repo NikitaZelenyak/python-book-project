@@ -6,7 +6,7 @@ def main():
     assistant = PersonalAssistant()
 
     while True:
-        mode = input("Select mode ").lower().strip()
+        mode = input("Select mode: ").lower().strip()
 
         if mode == "exit":
             break
@@ -14,7 +14,7 @@ def main():
             break
         elif mode == "notes":
             while True:
-                command = input("Input your command").lower().strip()
+                command = input("Input your command: ").lower().strip()
 
                 if command == "back":
                     break

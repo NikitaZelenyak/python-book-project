@@ -16,9 +16,9 @@ class NoteManager:
    def _save_notes(self):
       save_to_file(NOTES_FILE, [note.to_dict() for note in self.notes])
 
-   def edit_note(self, note_id, new_text):
+   def edit_note(self, note_id : str, new_text: str):
       for note in self.notes:
-         if note.id == note_id:
+         if note.id.value == note_id:
             note.edit_text(new_text)
             self._save_notes()
             break
