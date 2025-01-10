@@ -49,3 +49,11 @@ all       - show all contacts
 birthdays - show upcoming birthdays
 help      - show this help message
 back      - return to main menu"""
+
+# Notes messages / Повідомлення для роботи з нотатками
+TAGS_UPDATED = "Tags updated successfully!"
+NO_NOTES_WITH_TAG = "No notes found with this tag"
+NOTES_FOUND = "Found notes:"
+NO_NOTES_FOUND = "No notes found containing the given text."
+NOTES_WITH_TAG_FOUND = "Notes with tag '{tag}' found:"
+NO_NOTES_WITH_TAG = "No notes found with the tag '{tag}'."

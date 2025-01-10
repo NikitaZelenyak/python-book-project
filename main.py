@@ -10,7 +10,6 @@ from modules.core.utils.interactive import (
     show_birthdays_interactive,
 )
 
-
 def main():
     """
     Main function of the assistant
@@ -37,7 +36,7 @@ def main():
                         print(f"{Fore.YELLOW}🔙 Returning to main menu.")
                         break
                     elif command == HELP:
-                        print(f"{Fore.GREEN}ℹ️ {HELP_MESSAGE}")
+                        assistant.display_commands() 
                     elif command == ADD_CONTACT:
                         add_contact_interactive(assistant)
                     elif command == EDIT_CONTACT:
@@ -72,7 +71,7 @@ def main():
                         print(f"{Fore.YELLOW}🔙 Returning to main menu.")
                         break
                     elif command == HELP:
-                        print(f"{Fore.GREEN}ℹ️ Available commands: add, all, edit, delete, search, sort")
+                        assistant.display_commands() 
                     elif command == "add":
                         assistant.add_note()
                     elif command == "all":
@@ -81,13 +80,18 @@ def main():
                         assistant.edit_note()
                     elif command == "delete":
                         assistant.delete_note()
-                    elif command == "search":
-                        print(f"{Fore.YELLOW}🔍 Search functionality is not yet implemented.")
-                    elif command == "sort":
-                        print(f"{Fore.YELLOW}📂 Sort functionality is not yet implemented.")
+                    elif command == "search_note":
+                        assistant.search_note_by_text()
+                    elif command == "edit_tags":
+                        assistant.edit_note_tags()
+                    elif command == "search_by_tag":
+                        assistant.search_notes_by_tag()
+                    elif command == "filter_tag":
+                        assistant.filter_notes_by_tag()
+                    elif command == "sort_by_tags":
+                        assistant.sort_notes_by_tags()
                     else:
-                        print(f"{Fore.RED}⚠️ Invalid action. Please choose add, all, edit, delete, search, or sort.")
-
+                     print(f"{Fore.RED}⚠️ Invalid action. Please choose a valid command.")
                 except Exception as e:
                     print(f"{Fore.RED}⚠️ An error occurred: {e}")
 

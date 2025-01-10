@@ -9,6 +9,9 @@ class Note:
 
     def edit_text(self, new_text):
         self.text.value = new_text
+        
+    def edit_tags(self, new_tags):
+        self.tags.value = new_tags
 
     def __str__(self):
         return f"Note: {self.text.value}, Tags: {', '.join(self.tags.value)}"
@@ -23,3 +26,4 @@ class Note:
     @staticmethod
     def from_dict(note_dict):
         return Note(note_dict["text"], note_dict["tags"], note_dict["id"])
+    

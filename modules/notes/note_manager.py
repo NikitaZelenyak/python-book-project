@@ -25,3 +25,23 @@ class NoteManager:
    def delete_note(self, note_id : str):
       self.notes = [note for note in self.notes if note.id != note_id]
       self._save_notes()
+
+    def search_note_by_text(self, search_text: str):
+        return [note for note in self.notes if search_text in note.text]
+
+    def edit_note_tags(self, note_id: str, new_tags: list):
+        for note in self.notes:
+            if note.id.value == note_id:
+                note.edit_tags(new_tags)
+                self._save_notes()
+                break
+
+    def search_by_tag(self, tag: str):
+        return [note for note in self.notes if tag in note.tags]
+
+    def filter_notes_by_tag(self, tag: str):
+        return [note for note in self.notes if tag in note.tags]
+
+    def sort_by_tags(self):
+        return sorted(self.notes, key=lambda note: len(note.tags), reverse=True)
+     
