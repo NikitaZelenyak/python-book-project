@@ -105,7 +105,7 @@ class Birthday(Field):
                 if not self.validate_date(date):
                     raise ValueError("Invalid date")
 
-                self._value = date.strftime(DATE_FORMAT)
+                self._value = date
             except ValueError:
                 raise ValueError("Invalid date format")
         else:

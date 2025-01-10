@@ -168,5 +168,6 @@ def show_birthdays_interactive(assistant):
     if not days.isdigit():
         print(f"{Fore.RED}❌ Please enter a valid number")
         return
-
-    print(f"{Fore.YELLOW}ℹ️ {NOT_IMPLEMENTED_MESSAGE.format('Birthday reminder')}")
+    contacts = assistant.contacts.find_birthday_in_days(int(days))
+    show_search_results(contacts)
+   

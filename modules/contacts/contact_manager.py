@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta,date
 from modules.core.utils.file_manager import load_from_file, save_to_file
 from modules.core.constants.commands import CONTACTS_FILE
 from modules.contacts.contact import Contact
@@ -180,6 +181,7 @@ class ContactManager:
         return sorted(matches, key=lambda x: str(x.name.value).lower())
 
     def find_contacts(self, name):
+
         """
         Finds contacts by partial name match
         Пошук контактів за частковим збігом імені
@@ -194,3 +196,33 @@ class ContactManager:
             if search_name in contact.name.value.lower():
                 matches.append(contact)
         return sorted(matches, key=lambda x: str(x.name.value).lower())
+   
+    def find_birthday_in_days(self, days_ahead):
+        """
+        Finds contacts whose birthday is within a given number of days from today.
+        Пошук контактів, у яких день народження через задану кількість днів від поточної дати.
+
+        Args:
+            days_ahead (int): Number of days ahead to check for birthdays.
+        
+        Returns:
+            list: List of contacts whose birthdays are within the specified days ahead.
+        """
+        today = datetime.now()
+        upcoming_birthday_date = today + timedelta(days=days_ahead)
+        upcoming_birthday_contacts = []
+
+        for contact in self.contacts:
+            if contact.birthday:
+                # Get this year's birthday
+                birthday_this_year = contact.birthday.replace(year=today.year)
+
+                # Handle birthdays that have already passed this year
+                if birthday_this_year < today:
+                    birthday_this_year = birthday_this_year.replace(year=today.year + 1)
+
+                # Check if the birthday is within the given range
+                if today <= birthday_this_year <= upcoming_birthday_date:
+                    upcoming_birthday_contacts.append(contact)
+
+        return upcoming_birthday_contacts
