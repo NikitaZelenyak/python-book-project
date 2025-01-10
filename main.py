@@ -36,7 +36,8 @@ def main():
                         print(f"{Fore.YELLOW}🔙 Returning to main menu.")
                         break
                     elif command == HELP:
-                        assistant.display_commands() 
+                        print(f"{Fore.GREEN}ℹ️ {HELP_MESSAGE}")
+                        # assistant.display_commands() 
                     elif command == ADD_CONTACT:
                         add_contact_interactive(assistant)
                     elif command == EDIT_CONTACT:
