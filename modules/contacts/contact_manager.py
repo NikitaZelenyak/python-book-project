@@ -1,6 +1,6 @@
-from datetime import datetime, timedelta,date
+from datetime import datetime, timedelta, date
 from modules.core.utils.file_manager import load_from_file, save_to_file
-from modules.core.constants.commands import CONTACTS_FILE
+from modules.core.constants.commands import CONTACTS_FILE, DATE_FORMAT
 from modules.contacts.contact import Contact
 
 CONTACTS_FILE = "data/contacts.json"
@@ -28,7 +28,14 @@ class ContactManager:
                     contact.add_phone(phone)
                 # Restore birthday if exists / Відновлюємо день народження якщо є
                 if contact_data.get("birthday"):
-                    contact.add_birthday(contact_data["birthday"])
+                    # Convert from YYYY-MM-DD to DD.MM.YYYY
+                    date_str = contact_data["birthday"]
+                    try:
+                        date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+                        formatted_date = date_obj.strftime(DATE_FORMAT)
+                        contact.add_birthday(formatted_date)
+                    except ValueError:
+                        print(f"Failed to parse birthday: {date_str}")
                 # Restore email if exists / Відновлюємо email якщо є
                 if contact_data.get("email"):
                     contact.add_email(contact_data["email"])
@@ -41,11 +48,10 @@ class ContactManager:
         """
         Saves contacts to file / Зберігає контакти у файл
         """
-        print("\nSaving contacts to file:")
+        print("\nSaving contacts to file...")
         data = []
         for contact in self.contacts:
             contact_dict = contact.to_dict()
-            print(f"Saving contact: {contact_dict}")
             data.append(contact_dict)
         save_to_file(CONTACTS_FILE, data)
         print(f"Saved {len(data)} contacts")
@@ -181,7 +187,6 @@ class ContactManager:
         return sorted(matches, key=lambda x: str(x.name.value).lower())
 
     def find_contacts(self, name):
-
         """
         Finds contacts by partial name match
         Пошук контактів за частковим збігом імені
@@ -196,26 +201,26 @@ class ContactManager:
             if search_name in contact.name.value.lower():
                 matches.append(contact)
         return sorted(matches, key=lambda x: str(x.name.value).lower())
-   
+
     def find_birthday_in_days(self, days_ahead):
         """
-        Finds contacts whose birthday is within a given number of days from today.
-        Пошук контактів, у яких день народження через задану кількість днів від поточної дати.
+        Finds contacts whose birthday is within a given number of days from today and sorts them by nearest birthday.
+        Пошук контактів, у яких день народження через задану кількість днів від поточної дати та сортування за найближчим днем народження.
 
         Args:
             days_ahead (int): Number of days ahead to check for birthdays.
-        
+
         Returns:
-            list: List of contacts whose birthdays are within the specified days ahead.
+            list: List of contacts whose birthdays are within the specified days ahead, sorted by nearest birthday.
         """
-        today = datetime.now()
+        today = datetime.now().date()
         upcoming_birthday_date = today + timedelta(days=days_ahead)
         upcoming_birthday_contacts = []
 
         for contact in self.contacts:
             if contact.birthday:
-                # Get this year's birthday
-                birthday_this_year = contact.birthday.replace(year=today.year)
+                birthday = contact.birthday.value
+                birthday_this_year = birthday.replace(year=today.year)
 
                 # Handle birthdays that have already passed this year
                 if birthday_this_year < today:
@@ -223,6 +228,12 @@ class ContactManager:
 
                 # Check if the birthday is within the given range
                 if today <= birthday_this_year <= upcoming_birthday_date:
-                    upcoming_birthday_contacts.append(contact)
+                    # Add tuple of (contact, days_until_birthday) to the list
+                    days_until = (birthday_this_year - today).days
+                    upcoming_birthday_contacts.append((contact, days_until))
 
-        return upcoming_birthday_contacts
+        # Sort by days until birthday
+        upcoming_birthday_contacts.sort(key=lambda x: x[1])
+
+        # Return only the contacts, without the days count
+        return [contact for contact, _ in upcoming_birthday_contacts]
