@@ -13,6 +13,13 @@ BIRTHDAYS = "birthdays"
 HELP = "help"
 BACK = "back"
 
+# Notes commands / Команди для нотатків
+EDIT_NOTE_TAGS = "edit_tags"
+SEARCH_NOTE_BY_TEXT = "search_note_by_text"
+SEARCH_BY_TAG = "search_by_tag"
+FILTER_BY_TAG = "filter_notes_by_tag"
+SORT_BY_TAGS = "sort_by_tags"
+
 # Files / Файли
 CONTACTS_FILE = "data/contacts.json"
 NOTES_FILE = "data/notes.json"
