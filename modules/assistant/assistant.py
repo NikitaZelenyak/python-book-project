@@ -1,6 +1,6 @@
 from modules.contacts.contact_manager import ContactManager
 from modules.notes.note_manager import NoteManager
-
+from colorama import Fore, Style, init
 class PersonalAssistant:
     def __init__(self):
         self.contacts = ContactManager()
@@ -23,9 +23,6 @@ class PersonalAssistant:
         for command, description in self.commands.items():
             print(f"{Fore.CYAN}{command}: {description}")
 
-    def add_contact(self, name, address, phone, email, birthday):
-        self.contacts.add_contact(name, address, phone, email, birthday)
-
     def add_note(self):
         text = input("Enter note text: ")
         tags = input("Enter tags (comma separated): ").split(",")
@@ -46,7 +43,7 @@ class PersonalAssistant:
         for note in self.notes.notes:
             print(note)
             
-       def search_note_by_text(self):
+    def search_note_by_text(self):
         search_text = input("Enter text to search in notes: ")
         results = self.notes.search_note_by_text(search_text) 
         if results:
