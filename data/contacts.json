@@ -1,10 +1,196 @@
 [
     {
-        "id": "e6cdfa03-645a-40df-89c0-63191e8fbe06",
-        "name": "n",
+        "id": "7db972f6-e2b7-4e0c-8e9c-567f7cf962e1",
+        "name": "Oleksandr Petrov",
+        "phones": [
+            "9316139092"
+        ],
+        "birthday": "2000-01-12",
+        "email": "oleksandr.p@gmail.com",
+        "address": "Khreshchatyk St, 1, Kyiv"
+    },
+    {
+        "id": "4a8d7828-df99-4a89-91ea-c61353315ad9",
+        "name": "Maria Kovalenko",
+        "phones": [
+            "2112167610"
+        ],
+        "birthday": "1995-01-15",
+        "email": "maria.k@ukr.net",
+        "address": "Prospekt Svobody 25, Lviv"
+    },
+    {
+        "id": "b2c9f0a1-7d34-4e56-8f12-3a9b4c5d6e7f",
+        "name": "Ivan Melnyk",
+        "phones": [
+            "3807654321"
+        ],
+        "birthday": "1988-01-20",
+        "email": "ivan.m@gmail.com",
+        "address": "Derybasivska St, 15, Odesa"
+    },
+    {
+        "id": "c3d0e1f2-8e45-4f67-9g23-4b0c5d6e7f8g",
+        "name": "Natalia Shevchenko",
         "phones": [],
-        "birthday": "12.08.2000",
+        "birthday": "1992-02-05",
         "email": null,
         "address": null
+    },
+    {
+        "id": "d4e1f2g3-9f56-5g78-0h34-5c6d7e8f9g0h",
+        "name": "Andriy Kozak",
+        "phones": [
+            "3809876543"
+        ],
+        "birthday": "1997-02-18",
+        "email": "andriy.k@ukr.net",
+        "address": "Soborna St, 10, Dnipro"
+    },
+    {
+        "id": "e5f2g3h4-0g67-6h89-1i45-6d7e8f9g0h1i",
+        "name": "Yulia Tkachuk",
+        "phones": [
+            "3805432109"
+        ],
+        "birthday": "1993-03-01",
+        "email": "yulia.t@gmail.com",
+        "address": "Zamkova St, 5, Uzhhorod"
+    },
+    {
+        "id": "f6g3h4i5-1h78-7i90-2j56-7e8f9g0h1i2j",
+        "name": "Serhiy Bondar",
+        "phones": [
+            "3802345678"
+        ],
+        "birthday": "1990-03-15",
+        "email": null,
+        "address": "Myru Ave, 45, Kharkiv"
+    },
+    {
+        "id": "g7h4i5j6-2i89-8j01-3k67-8f9g0h1i2j3k",
+        "name": "Olena Lysenko",
+        "phones": [
+            "3801234567",
+            "3809876543"
+        ],
+        "birthday": "1996-03-28",
+        "email": "olena.l@ukr.net",
+        "address": "Soborna Square, 1, Poltava"
+    },
+    {
+        "id": "h8i5j6k7-3j90-9k12-4l78-9g0h1i2j3k4l",
+        "name": "Dmytro Kravchenko",
+        "phones": [],
+        "birthday": "1994-04-02",
+        "email": "dmytro.k@gmail.com",
+        "address": null
+    },
+    {
+        "id": "i9j6k7l8-4k01-0l23-5m89-0h1i2j3k4l5m",
+        "name": "Victoria Savchenko",
+        "phones": [
+            "3807890123"
+        ],
+        "birthday": "1991-04-15",
+        "email": "victoria.s@ukr.net",
+        "address": "Vokzalna St, 12, Sumy"
+    },
+    {
+        "id": "j0k7l8m9-5l12-1m34-6n90-1i2j3k4l5m6n",
+        "name": "Roman Ponomarenko",
+        "phones": [
+            "3803456789"
+        ],
+        "birthday": "1989-04-22",
+        "email": null,
+        "address": "Shevchenka St, 8, Chernihiv"
+    },
+    {
+        "id": "k1l8m9n0-6m23-2n45-7o01-2j3k4l5m6n7o",
+        "name": "Iryna Bondarenko",
+        "phones": [
+            "3804567890"
+        ],
+        "birthday": "1998-04-30",
+        "email": "iryna.b@gmail.com",
+        "address": "Kyivska St, 20, Zhytomyr"
+    },
+    {
+        "id": "l2m9n0o1-7n34-3o56-8p12-3k4l5m6n7o8p",
+        "name": "Maxym Kuchma",
+        "phones": [],
+        "birthday": "1987-05-05",
+        "email": "maxym.k@ukr.net",
+        "address": "Lesi Ukrainky St, 15, Vinnytsia"
+    },
+    {
+        "id": "m3n0o1p2-8o45-4p67-9q23-4l5m6n7o8p9q",
+        "name": "Anna Sydorenko",
+        "phones": [
+            "3806789012"
+        ],
+        "birthday": "1999-05-10",
+        "email": "anna.s@gmail.com",
+        "address": null
+    },
+    {
+        "id": "n4o1p2q3-9p56-5q78-0r34-5m6n7o8p9q0r",
+        "name": "Volodymyr Marchenko",
+        "phones": [
+            "3808901234"
+        ],
+        "birthday": "1986-05-15",
+        "email": "volodymyr.m@ukr.net",
+        "address": "Centralna St, 30, Cherkasy"
+    },
+    {
+        "id": "o5p2q3r4-0q67-6r89-1s45-6n7o8p9q0r1s",
+        "name": "Sofia Kovalchuk",
+        "phones": [
+            "3800123456"
+        ],
+        "birthday": "1995-05-20",
+        "email": null,
+        "address": "Pershotravneva St, 5, Ternopil"
+    },
+    {
+        "id": "p6q3r4s5-1r78-7s90-2t56-7o8p9q0r1s2t",
+        "name": "Yuriy Moroz",
+        "phones": [
+            "3809012345",
+            "3801234567"
+        ],
+        "birthday": "1992-05-25",
+        "email": "yuriy.m@gmail.com",
+        "address": "Nezalezhnosti St, 40, Rivne"
+    },
+    {
+        "id": "q7r4s5t6-2s89-8t01-3u67-8p9q0r1s2t3u",
+        "name": "Tetiana Pavlenko",
+        "phones": [
+            "3802345678"
+        ],
+        "birthday": "1997-05-28",
+        "email": "tetiana.p@ukr.net",
+        "address": "Soborna St, 25, Lutsk"
+    },
+    {
+        "id": "r8s5t6u7-3t90-9u12-4v78-9q0r1s2t3u4v",
+        "name": "Mykola Franchuk",
+        "phones": [],
+        "birthday": "1993-05-31",
+        "email": "mykola.f@gmail.com",
+        "address": "Halytska St, 18, Ivano-Frankivsk"
+    },
+    {
+        "id": "s9t6u7v8-4u01-0v23-5w89-0r1s2t3u4v5w",
+        "name": "Kateryna Zayets",
+        "phones": [
+            "3803456789"
+        ],
+        "birthday": "1991-05-31",
+        "email": "kateryna.z@ukr.net",
+        "address": "Vyshnevogo St, 7, Khmelnytskyi"
     }
 ]

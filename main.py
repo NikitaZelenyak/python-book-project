@@ -10,6 +10,7 @@ from modules.core.utils.interactive import (
     show_birthdays_interactive,
 )
 
+
 def main():
     """
     Main function of the assistant
@@ -27,7 +28,9 @@ def main():
             break
 
         elif mode == CONTACTS_MODE:
-            print(f"\n{Fore.YELLOW}📇 Entering contacts mode (type 'help' for available commands)")
+            print(
+                f"\n{Fore.YELLOW}📇 Entering contacts mode (type 'help' for available commands)"
+            )
             while True:
                 try:
                     command = input(f"{Fore.CYAN}{ENTER_COMMAND}").lower().strip()
@@ -37,7 +40,7 @@ def main():
                         break
                     elif command == HELP:
                         print(f"{Fore.GREEN}ℹ️ {HELP_MESSAGE}")
-                        # assistant.display_commands() 
+                        # assistant.display_commands()
                     elif command == ADD_CONTACT:
                         add_contact_interactive(assistant)
                     elif command == EDIT_CONTACT:
@@ -63,7 +66,9 @@ def main():
                     print(f"{Fore.RED}⚠️ An error occurred: {e}")
 
         elif mode == NOTES_MODE:
-            print(f"\n{Fore.YELLOW}📝 Entering notes mode (type 'help' for available commands)")
+            print(
+                f"\n{Fore.YELLOW}📝 Entering notes mode (type 'help' for available commands)"
+            )
             while True:
                 try:
                     command = input(f"{Fore.CYAN}{ENTER_COMMAND}").lower().strip()
@@ -72,7 +77,7 @@ def main():
                         print(f"{Fore.YELLOW}🔙 Returning to main menu.")
                         break
                     elif command == HELP:
-                        assistant.display_commands() 
+                        assistant.display_commands()
                     elif command == "add":
                         assistant.add_note()
                     elif command == "all":
@@ -92,7 +97,9 @@ def main():
                     elif command == "sort_by_tags":
                         assistant.sort_notes_by_tags()
                     else:
-                     print(f"{Fore.RED}⚠️ Invalid action. Please choose a valid command.")
+                        print(
+                            f"{Fore.RED}⚠️ Invalid action. Please choose a valid command."
+                        )
                 except Exception as e:
                     print(f"{Fore.RED}⚠️ An error occurred: {e}")
 
