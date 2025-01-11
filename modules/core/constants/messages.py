@@ -18,7 +18,9 @@ NO_CONTACTS = "No contacts found"
 ENTER_MODE = "Enter mode (contacts/notes or exit): "
 ENTER_COMMAND = "Enter command: "
 ENTER_NAME = "Enter name: "
-ENTER_PHONE = "Enter phone (10 digits) or press Enter to skip: "
+ENTER_PHONE = (
+    "Enter phone numbers (10 digits, comma-separated) or press Enter to skip: \n"
+)
 ENTER_EMAIL = "Enter email or press Enter to skip: "
 ENTER_ADDRESS = "Enter address or press Enter to skip: "
 ENTER_BIRTHDAY = "Enter birthday (DD.MM.YYYY) or press Enter to skip: "

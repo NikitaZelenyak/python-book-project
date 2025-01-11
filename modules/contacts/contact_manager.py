@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, date
+from modules.core.fields.fields import Address, Birthday, Email
 from modules.core.utils.file_manager import load_from_file, save_to_file
 from modules.core.constants.commands import CONTACTS_FILE, DATE_FORMAT
 from modules.contacts.contact import Contact
@@ -56,13 +57,13 @@ class ContactManager:
         save_to_file(CONTACTS_FILE, data)
         print(f"Saved {len(data)} contacts")
 
-    def add_contact(self, name, address=None, phone=None, email=None, birthday=None):
+    def add_contact(self, name, address=None, phones=None, email=None, birthday=None):
         """
         Adds a new contact / Додає новий контакт
         Args:
             name (str): Contact name / Ім'я контакту
             address (str, optional): Physical address / Фізична адреса
-            phone (str, optional): Phone number / Номер телефону
+            phones (list, optional): List of phone numbers / Список номерів телефонів
             email (str, optional): Email address / Адреса електронної пошти
             birthday (str, optional): Birthday in DD.MM.YYYY format / День народження
         Returns:
@@ -76,8 +77,9 @@ class ContactManager:
 
         if address:
             contact.add_address(address)
-        if phone:
-            contact.add_phone(phone)
+        if phones:
+            for phone in phones:
+                contact.add_phone(phone.strip())
         if email:
             contact.add_email(email)
         if birthday:
@@ -124,13 +126,15 @@ class ContactManager:
             return True
         return False
 
-    def update_contact(self, name, address=None, phone=None, email=None, birthday=None):
+    def update_contact(
+        self, name, address=None, phones=None, email=None, birthday=None
+    ):
         """
         Updates contact information / Оновлює інформацію контакту
         Args:
             name (str): Contact name / Ім'я контакту
             address (str, optional): New physical address / Нова фізична адреса
-            phone (str, optional): New phone number / Новий номер телефону
+            phones (list, optional): List of phone numbers / Список номерів телефонів
             email (str, optional): New email address / Нова адреса електронної пошти
             birthday (str, optional): New birthday / Новий день народження
         Returns:
@@ -141,13 +145,15 @@ class ContactManager:
             return False
 
         if address:
-            contact.add_address(address)
-        if phone:
-            contact.add_phone(phone)
+            contact.address = Address(address)
+        if phones:
+            contact.phones = []  # Clear existing phones
+            for phone in phones:
+                contact.add_phone(phone.strip())
         if email:
-            contact.add_email(email)
+            contact.email = Email(email)
         if birthday:
-            contact.add_birthday(birthday)
+            contact.birthday = Birthday(birthday)
 
         self.save_contacts()
         return True

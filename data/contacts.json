@@ -1,6 +1,6 @@
 [
     {
-        "id": "7db972f6-e2b7-4e0c-8e9c-567f7cf962e1",
+        "id": "d0e98754-1f6b-46b6-80ff-51fe9902ab8c",
         "name": "Oleksandr Petrov",
         "phones": [
             "9316139092"
@@ -10,7 +10,7 @@
         "address": "Khreshchatyk St, 1, Kyiv"
     },
     {
-        "id": "4a8d7828-df99-4a89-91ea-c61353315ad9",
+        "id": "75e707d1-2cf6-4fce-8c67-612a51d516fc",
         "name": "Maria Kovalenko",
         "phones": [
             "2112167610"
@@ -20,7 +20,7 @@
         "address": "Prospekt Svobody 25, Lviv"
     },
     {
-        "id": "b2c9f0a1-7d34-4e56-8f12-3a9b4c5d6e7f",
+        "id": "5af0bce8-3391-4528-8e83-760df3d03024",
         "name": "Ivan Melnyk",
         "phones": [
             "3807654321"
@@ -30,7 +30,7 @@
         "address": "Derybasivska St, 15, Odesa"
     },
     {
-        "id": "c3d0e1f2-8e45-4f67-9g23-4b0c5d6e7f8g",
+        "id": "36f26857-1885-4dc9-a001-b3381b7be430",
         "name": "Natalia Shevchenko",
         "phones": [],
         "birthday": "1992-02-05",
@@ -38,7 +38,7 @@
         "address": null
     },
     {
-        "id": "d4e1f2g3-9f56-5g78-0h34-5c6d7e8f9g0h",
+        "id": "6a8a732c-3b29-478c-b59e-356620b1b503",
         "name": "Andriy Kozak",
         "phones": [
             "3809876543"
@@ -48,7 +48,7 @@
         "address": "Soborna St, 10, Dnipro"
     },
     {
-        "id": "e5f2g3h4-0g67-6h89-1i45-6d7e8f9g0h1i",
+        "id": "30e8ba8e-01cc-49b8-913d-f52bcbdd7478",
         "name": "Yulia Tkachuk",
         "phones": [
             "3805432109"
@@ -58,7 +58,7 @@
         "address": "Zamkova St, 5, Uzhhorod"
     },
     {
-        "id": "f6g3h4i5-1h78-7i90-2j56-7e8f9g0h1i2j",
+        "id": "24962261-4870-404d-92b7-f7e066028990",
         "name": "Serhiy Bondar",
         "phones": [
             "3802345678"
@@ -68,7 +68,7 @@
         "address": "Myru Ave, 45, Kharkiv"
     },
     {
-        "id": "g7h4i5j6-2i89-8j01-3k67-8f9g0h1i2j3k",
+        "id": "b1ec30ec-d469-4f4b-a91f-ed818c2cb842",
         "name": "Olena Lysenko",
         "phones": [
             "3801234567",
@@ -79,7 +79,7 @@
         "address": "Soborna Square, 1, Poltava"
     },
     {
-        "id": "h8i5j6k7-3j90-9k12-4l78-9g0h1i2j3k4l",
+        "id": "a2880707-7d6f-40e9-a2e5-44c6ef18e82c",
         "name": "Dmytro Kravchenko",
         "phones": [],
         "birthday": "1994-04-02",
@@ -87,7 +87,7 @@
         "address": null
     },
     {
-        "id": "i9j6k7l8-4k01-0l23-5m89-0h1i2j3k4l5m",
+        "id": "cf920502-cf0b-4caf-9a6f-51b16c431018",
         "name": "Victoria Savchenko",
         "phones": [
             "3807890123"
@@ -97,7 +97,7 @@
         "address": "Vokzalna St, 12, Sumy"
     },
     {
-        "id": "j0k7l8m9-5l12-1m34-6n90-1i2j3k4l5m6n",
+        "id": "77a843f0-0ee0-4d81-ba4e-3d80075c8233",
         "name": "Roman Ponomarenko",
         "phones": [
             "3803456789"
@@ -107,7 +107,7 @@
         "address": "Shevchenka St, 8, Chernihiv"
     },
     {
-        "id": "k1l8m9n0-6m23-2n45-7o01-2j3k4l5m6n7o",
+        "id": "d96b5e1b-32ae-4153-af56-5d373fcf811a",
         "name": "Iryna Bondarenko",
         "phones": [
             "3804567890"
@@ -117,7 +117,7 @@
         "address": "Kyivska St, 20, Zhytomyr"
     },
     {
-        "id": "l2m9n0o1-7n34-3o56-8p12-3k4l5m6n7o8p",
+        "id": "367f07aa-00b4-4303-b602-c105ed668b21",
         "name": "Maxym Kuchma",
         "phones": [],
         "birthday": "1987-05-05",
@@ -125,17 +125,18 @@
         "address": "Lesi Ukrainky St, 15, Vinnytsia"
     },
     {
-        "id": "m3n0o1p2-8o45-4p67-9q23-4l5m6n7o8p9q",
+        "id": "427f6032-e71e-4823-a82e-f51b7b1fa15a",
         "name": "Anna Sydorenko",
         "phones": [
-            "3806789012"
+            "3806789012",
+            "3806789013"
         ],
-        "birthday": "1999-05-10",
+        "birthday": "1999-01-19",
         "email": "anna.s@gmail.com",
-        "address": null
+        "address": "Soborna St, 12, Dnipro"
     },
     {
-        "id": "n4o1p2q3-9p56-5q78-0r34-5m6n7o8p9q0r",
+        "id": "6dedd920-041e-47a6-a7c3-11fda1085bda",
         "name": "Volodymyr Marchenko",
         "phones": [
             "3808901234"
@@ -145,7 +146,7 @@
         "address": "Centralna St, 30, Cherkasy"
     },
     {
-        "id": "o5p2q3r4-0q67-6r89-1s45-6n7o8p9q0r1s",
+        "id": "10cc45e9-9f29-4057-9a04-d4238aa101a9",
         "name": "Sofia Kovalchuk",
         "phones": [
             "3800123456"
@@ -155,7 +156,7 @@
         "address": "Pershotravneva St, 5, Ternopil"
     },
     {
-        "id": "p6q3r4s5-1r78-7s90-2t56-7o8p9q0r1s2t",
+        "id": "4aaebd6b-ebd2-4a21-9a5d-819f67a88525",
         "name": "Yuriy Moroz",
         "phones": [
             "3809012345",
@@ -166,7 +167,7 @@
         "address": "Nezalezhnosti St, 40, Rivne"
     },
     {
-        "id": "q7r4s5t6-2s89-8t01-3u67-8p9q0r1s2t3u",
+        "id": "5d36962a-a7e2-472a-b599-9296053cd671",
         "name": "Tetiana Pavlenko",
         "phones": [
             "3802345678"
@@ -176,7 +177,7 @@
         "address": "Soborna St, 25, Lutsk"
     },
     {
-        "id": "r8s5t6u7-3t90-9u12-4v78-9q0r1s2t3u4v",
+        "id": "0be72d59-38a9-4684-9373-39fea32b4727",
         "name": "Mykola Franchuk",
         "phones": [],
         "birthday": "1993-05-31",
@@ -184,7 +185,7 @@
         "address": "Halytska St, 18, Ivano-Frankivsk"
     },
     {
-        "id": "s9t6u7v8-4u01-0v23-5w89-0r1s2t3u4v5w",
+        "id": "184639a8-30a3-4db7-927d-ce2841ffe234",
         "name": "Kateryna Zayets",
         "phones": [
             "3803456789"
