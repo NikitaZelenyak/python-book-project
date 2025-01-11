@@ -1,17 +1,21 @@
-from datetime import datetime, date, timedelta
+from datetime import date
 from modules.core.constants.commands import DATE_FORMAT
 from modules.core.fields import Phone, Email, Address, Birthday
 from modules.core.constants.messages import *
-from modules.core.utils.input_manager import input_with_validation
-from colorama import Fore, Style, init
-
+from modules.core.utils.input_handlers import (
+    handle_phones_input,
+    handle_email_input,
+    handle_address_input,
+    handle_birthday_input,
+)
+from colorama import Fore
 from modules.core.utils.table_viewer import TableViewer
 
 
 def add_contact_interactive(assistant):
     """
-    Interactive contact addition with field validation loops
-    Інтерактивне додавання контакту з циклами перевірки полів
+    Interactive contact addition with field validation
+    Інтерактивне додавання контакту з валідацією полів
     """
     print(f"\n{Fore.GREEN}➕ {ADDING_CONTACT}")
 
@@ -26,72 +30,12 @@ def add_contact_interactive(assistant):
             continue
         break
 
-    # Phone input with validation loop / Введення телефону з циклом перевірки
-    phones = None
-    while True:
-        phones_input = input(
-            f"{Fore.CYAN}Enter phone numbers (10 digits, comma-separated) or press Enter to skip: "
-        ).strip()
-        if not phones_input:
-            break
-
-        phone_list = [p.strip() for p in phones_input.split(",")]
-        valid_phones = []
-        invalid_phones = []
-
-        for phone in phone_list:
-            if Phone.validate(phone):
-                valid_phones.append(phone)
-            else:
-                invalid_phones.append(phone)
-
-        if invalid_phones:
-            print(
-                f"{Fore.RED}⚠️ Invalid phone number format: {', '.join(invalid_phones)}"
-            )
-            continue
-
-        phones = valid_phones
-        break
-
-    # Email input with validation loop / Введення пошти з циклом перевірки
-    email = None
-    while True:
-        email_input = input(f"{Fore.CYAN}{ENTER_EMAIL}").strip()
-        if not email_input:
-            break
-
-        if Email.validate(email_input):
-            email = email_input
-            break
-        else:
-            print(f"{Fore.RED}⚠️ {INVALID_EMAIL}")
-
-    # Address input with validation loop / Введення адреси з циклом перевірки
-    address = None
-    while True:
-        address_input = input(f"{Fore.CYAN}{ENTER_ADDRESS}").strip()
-        if not address_input:
-            break
-
-        if Address.validate(address_input):
-            address = address_input
-            break
-        else:
-            print(f"{Fore.RED}⚠️ {INVALID_ADDRESS}")
-
-    # Birthday input with validation loop / Введення дня народження з циклом перевірки
-    birthday = None
-    while True:
-        birthday_input = input(f"{Fore.CYAN}{ENTER_BIRTHDAY}").strip()
-        if not birthday_input:
-            break
-
-        if Birthday.validate(birthday_input):
-            birthday = birthday_input
-            break
-        else:
-            print(f"{Fore.RED}⚠️ {INVALID_DATE}")
+    phones = handle_phones_input(
+        f"{Fore.CYAN}Enter phone numbers (10 digits, comma-separated) or press Enter to skip: "
+    )
+    email = handle_email_input(f"{Fore.CYAN}{ENTER_EMAIL}")
+    address = handle_address_input(f"{Fore.CYAN}{ENTER_ADDRESS}")
+    birthday = handle_birthday_input(f"{Fore.CYAN}{ENTER_BIRTHDAY}")
 
     result = assistant.contacts.add_contact(name, address, phones, email, birthday)
     if result:
@@ -100,8 +44,8 @@ def add_contact_interactive(assistant):
 
 def edit_contact_interactive(assistant):
     """
-    Interactive contact editing with field validation loops
-    Інтерактивне редагування контакту з циклами перевірки полів
+    Interactive contact editing with field validation
+    Інтерактивне редагування контакту з валідацією полів
     """
     print(f"\n{Fore.BLUE}✏️ {EDITING_CONTACT}")
 
@@ -119,72 +63,12 @@ def edit_contact_interactive(assistant):
     print(f"\n{Fore.YELLOW}ℹ️ Current contact info:\n{contact}")
     print("\nEnter new values (press Enter to keep current value)")
 
-    # Phone input with validation loop / Введення телефону з циклом перевірки
-    phones = None
-    while True:
-        phones_input = input(
-            f"{Fore.CYAN}Enter phone numbers (10 digits, comma-separated) or press Enter to skip: "
-        ).strip()
-        if not phones_input:
-            break
-
-        phone_list = [p.strip() for p in phones_input.split(",")]
-        valid_phones = []
-        invalid_phones = []
-
-        for phone in phone_list:
-            if Phone.validate(phone):
-                valid_phones.append(phone)
-            else:
-                invalid_phones.append(phone)
-
-        if invalid_phones:
-            print(
-                f"{Fore.RED}⚠️ Invalid phone number format: {', '.join(invalid_phones)}"
-            )
-            continue
-
-        phones = valid_phones
-        break
-
-    # Email input with validation loop
-    email = None
-    while True:
-        email_input = input(f"{Fore.CYAN}{ENTER_EMAIL}").strip()
-        if not email_input:
-            break
-
-        if Email.validate(email_input):
-            email = email_input
-            break
-        else:
-            print(f"{Fore.RED}⚠️ {INVALID_EMAIL}")
-
-    # Address input with validation loop
-    address = None
-    while True:
-        address_input = input(f"{Fore.CYAN}{ENTER_ADDRESS}").strip()
-        if not address_input:
-            break
-
-        if Address.validate(address_input):
-            address = address_input
-            break
-        else:
-            print(f"{Fore.RED}⚠️ {INVALID_ADDRESS}")
-
-    # Birthday input with validation loop
-    birthday = None
-    while True:
-        birthday_input = input(f"{Fore.CYAN}{ENTER_BIRTHDAY}").strip()
-        if not birthday_input:
-            break
-
-        if Birthday.validate(birthday_input):
-            birthday = birthday_input
-            break
-        else:
-            print(f"{Fore.RED}⚠️ {INVALID_DATE}")
+    phones = handle_phones_input(
+        f"{Fore.CYAN}Enter phone numbers (10 digits, comma-separated) or press Enter to skip: "
+    )
+    email = handle_email_input(f"{Fore.CYAN}{ENTER_EMAIL}")
+    address = handle_address_input(f"{Fore.CYAN}{ENTER_ADDRESS}")
+    birthday = handle_birthday_input(f"{Fore.CYAN}{ENTER_BIRTHDAY}")
 
     if assistant.contacts.update_contact(name, address, phones, email, birthday):
         print(f"{Fore.GREEN}✅ {CONTACT_UPDATED}")
