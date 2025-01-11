@@ -351,3 +351,5 @@ def show_birthdays_interactive(assistant):
     table_viewer.display_table(
         table_data, title=f"🎂 Birthdays in the next {days} days:"
     )
+
+# Notes 

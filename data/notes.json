@@ -22,5 +22,12 @@
             "work",
             "urgent"
         ]
+    },
+    {
+        "id": "e1789e93-c522-483e-8196-92f3d3c8820f",
+        "text": "test Nikita",
+        "tags": [
+            "nikita"
+        ]
     }
 ]
