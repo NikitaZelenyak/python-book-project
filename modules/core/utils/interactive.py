@@ -1,7 +1,11 @@
+from datetime import datetime, date, timedelta
+from modules.core.constants.commands import DATE_FORMAT
 from modules.core.fields import Phone, Email, Address, Birthday
 from modules.core.constants.messages import *
 from modules.core.utils.input_manager import input_with_validation
 from colorama import Fore, Style, init
+
+from modules.core.utils.table_viewer import TableViewer
 
 
 def add_contact_interactive(assistant):
@@ -22,7 +26,7 @@ def add_contact_interactive(assistant):
             continue
         break
 
-    # Phone input with validation loop
+    # Phone input with validation loop / Введення телефону з циклом перевірки
     phones = None
     while True:
         phones_input = input(
@@ -50,7 +54,7 @@ def add_contact_interactive(assistant):
         phones = valid_phones
         break
 
-    # Email input with validation loop
+    # Email input with validation loop / Введення пошти з циклом перевірки
     email = None
     while True:
         email_input = input(f"{Fore.CYAN}{ENTER_EMAIL}").strip()
@@ -63,7 +67,7 @@ def add_contact_interactive(assistant):
         else:
             print(f"{Fore.RED}⚠️ {INVALID_EMAIL}")
 
-    # Address input with validation loop
+    # Address input with validation loop / Введення адреси з циклом перевірки
     address = None
     while True:
         address_input = input(f"{Fore.CYAN}{ENTER_ADDRESS}").strip()
@@ -76,7 +80,7 @@ def add_contact_interactive(assistant):
         else:
             print(f"{Fore.RED}⚠️ {INVALID_ADDRESS}")
 
-    # Birthday input with validation loop
+    # Birthday input with validation loop / Введення дня народження з циклом перевірки
     birthday = None
     while True:
         birthday_input = input(f"{Fore.CYAN}{ENTER_BIRTHDAY}").strip()
@@ -115,7 +119,7 @@ def edit_contact_interactive(assistant):
     print(f"\n{Fore.YELLOW}ℹ️ Current contact info:\n{contact}")
     print("\nEnter new values (press Enter to keep current value)")
 
-    # Phone input with validation loop
+    # Phone input with validation loop / Введення телефону з циклом перевірки
     phones = None
     while True:
         phones_input = input(
@@ -219,17 +223,33 @@ def delete_contact_interactive(assistant):
 
 def show_search_results(matches):
     """
-    Shows search results in a formatted way
-    Показує результати пошуку у форматованому вигляді
-    Args:
-        matches (list): List of found contacts / Список знайдених контактів
+    Shows search results in a formatted table with fixed column order
+    Показує результати пошуку у форматованій таблиці з фіксованим порядком стовпців
     """
-    if matches:
-        print(f"\n{Fore.GREEN}✅ Found {len(matches)} contact(s):")
-        for i, contact in enumerate(matches, 1):
-            print(f"{Fore.MAGENTA}{i}. {contact}")
-    else:
+    if not matches:
         print(f"{Fore.RED}❌ {CONTACT_NOT_FOUND}")
+        return
+
+    # Define fixed column order / Визначаємо фіксований порядок стовпців
+    columns = ["Name", "Phones", "Email", "Address", "Birthday"]
+    table_viewer = TableViewer(columns)
+    table_data = []
+
+    for contact in matches:
+        contact_data = {
+            "Name": str(contact.name),
+            "Phones": (
+                ", ".join(str(p) for p in contact.phones) if contact.phones else ""
+            ),
+            "Birthday": (
+                contact.birthday.value.strftime(DATE_FORMAT) if contact.birthday else ""
+            ),
+            "Email": str(contact.email) if contact.email else "",
+            "Address": str(contact.address) if contact.address else "",
+        }
+        table_data.append(contact_data)
+
+    table_viewer.display_table(table_data, title=f"✅ Found {len(matches)} contact(s):")
 
 
 def search_contacts_interactive(assistant):
@@ -278,8 +298,8 @@ def search_contacts_interactive(assistant):
 
 def show_birthdays_interactive(assistant):
     """
-    Interactive birthday reminder
-    Інтерактивний показ днів народження
+    Interactive birthday reminder with tabular display
+    Інтерактивний показ днів народження з табличним відображенням
     """
     print(f"\n{Fore.CYAN}🎂 Birthday reminder")
 
@@ -293,5 +313,41 @@ def show_birthdays_interactive(assistant):
     if not days.isdigit():
         print(f"{Fore.RED}❌ Please enter a valid number")
         return
+
     contacts = assistant.contacts.find_birthday_in_days(int(days))
-    show_search_results(contacts)
+    if not contacts:
+        print(f"{Fore.RED}❌ No birthdays in the next {days} days")
+        return
+
+    # Define fixed column order for birthday table / Визначаємо фіксований порядок стовпців для таблиці днів народження
+    birthday_columns = ["Days until", "Name", "Birthday", "Phones", "Email", "Address"]
+    table_viewer = TableViewer(birthday_columns)
+    table_data = []
+
+    today = date.today()
+
+    for contact in contacts:
+        # Calculate days until birthday / Розрахунок днів до дня народження
+        birthday = contact.birthday.value
+        birthday_this_year = birthday.replace(year=today.year)
+
+        if birthday_this_year < today:
+            birthday_this_year = birthday_this_year.replace(year=today.year + 1)
+
+        days_until = (birthday_this_year - today).days
+
+        contact_data = {
+            "Days until": f"{days_until} days",
+            "Name": str(contact.name),
+            "Birthday": birthday.strftime(DATE_FORMAT),
+            "Phones": (
+                ", ".join(str(p) for p in contact.phones) if contact.phones else ""
+            ),
+            "Email": str(contact.email) if contact.email else "",
+            "Address": str(contact.address) if contact.address else "",
+        }
+        table_data.append(contact_data)
+
+    table_viewer.display_table(
+        table_data, title=f"🎂 Birthdays in the next {days} days:"
+    )
