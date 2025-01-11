@@ -4,8 +4,6 @@ from modules.core.utils.file_manager import load_from_file, save_to_file
 from modules.core.constants.commands import CONTACTS_FILE, DATE_FORMAT
 from modules.contacts.contact import Contact
 
-CONTACTS_FILE = "data/contacts.json"
-
 
 class ContactManager:
     """

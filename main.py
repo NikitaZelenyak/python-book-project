@@ -9,6 +9,7 @@ from modules.core.utils.interactive import (
     search_contacts_interactive,
     show_birthdays_interactive,
 )
+from modules.core.utils.table_viewer import TableViewer
 
 
 def main():
@@ -52,9 +53,39 @@ def main():
                     elif command == ALL_CONTACTS:
                         contacts = assistant.contacts.get_all_contacts()
                         if contacts:
-                            print(f"\n{Fore.MAGENTA}📋 All contacts:")
+                            birthday_columns = [
+                                "Name",
+                                "Phones",
+                                "Email",
+                                "Address",
+                                "Birthday",
+                            ]
+                            table_viewer = TableViewer(birthday_columns)
+                            table_data = []
                             for contact in contacts:
-                                print(f"{Fore.WHITE}{contact}")
+                                contact_data = {
+                                    "Name": str(contact.name),
+                                    "Phones": (
+                                        ", ".join(str(p) for p in contact.phones)
+                                        if contact.phones
+                                        else ""
+                                    ),
+                                    "Birthday": (
+                                        contact.birthday.value.strftime(DATE_FORMAT)
+                                        if contact.birthday
+                                        else ""
+                                    ),
+                                    "Email": (
+                                        str(contact.email) if contact.email else ""
+                                    ),
+                                    "Address": (
+                                        str(contact.address) if contact.address else ""
+                                    ),
+                                }
+                                table_data.append(contact_data)
+                            table_viewer.display_table(
+                                table_data, title=f"{Fore.MAGENTA}📋 All contacts:"
+                            )
                         else:
                             print(NO_CONTACTS)
                     elif command == BIRTHDAYS:
