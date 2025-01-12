@@ -111,11 +111,11 @@ def main():
                         print(f"{Fore.GREEN}ℹ️ Available commands:")
                         for command, description in assistant.commands.items():
                             print(f"{Fore.CYAN}{command}: {description}")
-                    elif command == "add":
+                    elif command == ADD_NOTE:
                         text = input("Enter note text: ")
                         tags = input("Enter tags (comma separated): ").split(",")
                         assistant.notes.add_note(text, tags)
-                    elif command == "all":
+                    elif command == ALL_NOTES:
                         notes = assistant.notes.notes
                         if notes:
                             columns = ["ID", "Text", "Tags"]
@@ -132,16 +132,16 @@ def main():
                             )
                         else:
                             print(f"{Fore.YELLOW}No notes available.")
-                    elif command == "edit":
+                    elif command == EDIT_NOTE:
                         note_id = input("Enter note id: ")
                         new_text = input("Enter new text: ")
                         assistant.notes.edit_note(note_id, new_text)
                         print(f"Note edited successfully. {note_id}")
-                    elif command == "delete":
+                    elif command == DELETE_NOTE:
                         note_id = input("Enter note id: ")
                         assistant.notes.delete_note(note_id)
                         print(f"Note deleted successfully. {note_id}")
-                    elif command == "search_note":
+                    elif command == SEARCH_NOTE_BY_TEXT:
                         search_text = input("Enter text to search in notes: ")
                         results = assistant.notes.search_note_by_text(search_text)
                         if results:
@@ -150,12 +150,12 @@ def main():
                                 print(note)
                         else:
                             print("No notes found containing the given text.")
-                    elif command == "edit_tags":
+                    elif command == EDIT_NOTE_TAGS:
                         note_id = input("Enter note ID: ")
                         new_tags = input("Enter new tags (comma separated): ").split(",")
                         assistant.notes.edit_note_tags(note_id, new_tags)
                         print("Tags updated successfully!")
-                    elif command == "search_by_tag":
+                    elif command == SEARCH_BY_TAG:
                         tag = input("Enter tag to search: ")
                         results = assistant.notes.search_by_tag(tag)
                         if results:
@@ -164,7 +164,7 @@ def main():
                                 print(note)
                         else:
                             print("No notes found with this tag.")
-                    elif command == "filter_tag":
+                    elif command == FILTER_BY_TAG:
                         tag = input("Enter tag to filter notes: ")
                         results = assistant.notes.filter_notes_by_tag(tag)
                         if results:
@@ -173,7 +173,7 @@ def main():
                                 print(note)
                         else:
                             print("No notes found with the tag '{}'.".format(tag))
-                    elif command == "sort_by_tags":
+                    elif command == SORT_BY_TAGS:
                         sorted_notes = assistant.notes.sort_by_tags()
                         print("\nNotes sorted by number of tags:")
                         for note in sorted_notes:

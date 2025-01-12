@@ -23,7 +23,7 @@ class NoteManager:
             break
 
    def delete_note(self, note_id : str):
-      self.notes = [note for note in self.notes if note.id != note_id]
+      self.notes = [note for note in self.notes if note.id.value != note_id]
       self._save_notes()
 
    def search_note_by_text(self, search_text: str):
