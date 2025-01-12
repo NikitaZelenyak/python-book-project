@@ -14,6 +14,10 @@ HELP = "help"
 BACK = "back"
 
 # Notes commands / Команди для нотатків
+ADD_NOTE = "add"
+EDIT_NOTE = "edit"
+DELETE_NOTE = "delete"
+ALL_NOTES = "all"
 EDIT_NOTE_TAGS = "edit_tags"
 SEARCH_NOTE_BY_TEXT = "search_note_by_text"
 SEARCH_BY_TAG = "search_by_tag"
